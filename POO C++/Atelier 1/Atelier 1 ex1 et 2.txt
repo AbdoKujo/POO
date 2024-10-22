@@ -1,0 +1,69 @@
+------------------------Exercice 1:
+
+Soient les déclarations :
+
+char c = '\x01' ;
+short int p = 10 ;
+int n = 5 ;
+double z = 5.5 ;
+Les types et les valeurs des expressions suivantes :
+
+p + 3 :
+Type : int
+Valeur : 13
+
+c + 1 :
+Type : int
+Valeur : 2 (puisque c = 1 en hexadécimal)
+
+p + c :
+Type : int
+Valeur : 11 (10 + 1)
+
+3 * p + 5 * c :
+Type : int
+Valeur : 35 (310 + 51)
+
+(float) z + n / 2 :
+Type : float
+Valeur : 7.5 ((float) 5.5 + 2)
+
+---------------------Exercice 2:
+Résultats du programme :
+
+
+#include <iostream>
+using namespace std;
+int main() {
+    // cas 1
+    int n=10, p=5, q=10, r;
+    r = n == (p = q);
+    cout << "A : n = " << n << " p = " << p << " q = " << q << " r = " << r << "\n";
+
+    // cas 2
+    n = p = q = 5;
+    n += p += q;
+    cout << "B : n = " << n << " p = " << p << " q = " << q << "\n";
+
+    // cas 3
+    q = n > p ? n++ : p++;
+    cout << "C : n = " << n << " p = " << p << " q = " << q << "\n";
+
+    // cas 4
+    n = 5; p = 2;
+    q = ++n == 6 && ++p == 3;
+    cout << "D : n = " << n << " p = " << p << " q = " << q << "\n";
+    return 0;
+}
+
+A : n = 10, p = 10, q = 10, r = 1
+(Le test n == p est vrai, donc r = 1)
+
+B : n = 15, p = 10, q = 5
+(n += p += q se traduit par : p = p + q, puis n = n + p)
+
+C : n = 16, p = 11, q = 15
+(L'opérateur ternaire affecte q à n puisque n > p)
+
+D : n = 6, p = 3, q = 1
+(++n == 6 et ++p == 3 sont tous deux vrais, donc q = 1)
