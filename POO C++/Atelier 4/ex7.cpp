@@ -22,7 +22,7 @@ public:
         nouveau->data = valeur;
         nouveau->next = head;
         head = nouveau;
-        cout << "Empilé : " << valeur << endl;
+        cout << "EmpilÃ© : " << valeur << endl;
     }
     int pop() {
         if (head == nullptr) {
@@ -33,7 +33,7 @@ public:
         Node* ancienhead = head;
         head = head->next;
         delete ancienhead;
-        cout << "Dépilé : " << valeur << endl;
+        cout << "DÃ©pilÃ© : " << valeur << endl;
         return valeur;
     }
     bool estVide() const {
@@ -57,4 +57,40 @@ int main() {
     }
     return 0;
 }
+// autre methode
 
+#include<iostream>
+#include<list>
+using namespace std;
+class pile{
+	list<int> p;
+	public : 
+	pile() : p(1,0){}
+	pile(int v) : p(1,v){}
+	~pile(){
+		cout<<"\nelement supprime"<<endl;
+	};
+	void push(int v){
+		p.push_front(v);
+	}
+	void pop(){
+		if(!p.empty())
+		p.pop_front();
+		else cout<<" \nle pile est vide"<<endl;
+	}
+	void display(){
+		for(auto it : p) cout<<it<<" " ; //for(auto it=p.be....)
+	}
+};
+int main(){
+	pile p1(5) , p2(8) ;
+	for(size_t i=0 ; i<5; i++){
+			p1.push(i*i);
+			p2.push(i+i);
+	}
+	p1.pop();
+	p2.pop();
+	p1.display();
+	cout<<endl;
+	p2.display();
+}
